@@ -1,0 +1,43 @@
+.standard div,
+.standard div,
+.standard ul,
+.standard li,
+.standard p,
+.standard nav,
+.standard section,
+.standard header,
+.standard footer,
+.standard h1,
+.standard h2,
+.standard h3,
+.standard h4,
+.standard h5,
+.standard h6 {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+.standard ul li {
+  list-style-type: none;
+}
+
+.standard a:hover,
+.standard a:link,
+.standard a:visited,
+.standard a:active {
+  text-decoration: underline;
+  color: none;
+  outline: none;
+}
+
+.standard h1 {
+  font-size: 24px;
+}
+
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  .standard h1 {
+    font-size: 32px;
+  }
+}

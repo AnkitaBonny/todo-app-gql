@@ -1,0 +1,187 @@
+/* Mobile first */
+.standard {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  margin: 0 8px;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.standard .logo {
+  font-size: 48px;
+  font-weight: bold;
+  color: #09479e;
+  margin: 5px 0 15px;
+}
+
+.wrapper {
+  box-sizing: border-box; /* to avoid bleeding thru the parent div */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 95%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  margin: 5px 0 25px;
+  text-align: center;
+}
+
+.notify {
+  min-height: 60px;
+  width: 100%;
+  position: relative;
+}
+
+.notify .display-enter {
+  opacity: 0.01;
+}
+
+.notify .display-enter-active {
+  opacity: 1;
+  transition: all 500ms ease-in;
+}
+
+.notify .display-exit {
+  opacity: 1;
+}
+
+.notify .display-exit-active {
+  opacity: 0.01;
+  transition: all 500ms ease-out;
+}
+
+.notify .notification {
+  background-color: #fef7f7;
+  border: 1px solid #f9d8d9;
+  font-size: 14px;
+  padding: 10px 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.notification .message {
+  color: #de1c24;
+  margin-left: 20px;
+}
+
+.notification .message.error:before {
+  position: absolute;
+  top: 10px;
+  left: 6px;
+  content: "\2715";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.notification .message.success:before {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  content: "\2713";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.notification .message.warning:before {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  content: "\0021";
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.main {
+  padding: 5px;
+  width: 100%;
+}
+
+.footer {
+  font-size: 12px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer.sticky {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.standard input[type="text"],
+.standard input[type="password"],
+.standard input[type="email"] {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box; /* to avoid bleeding thru the parent div */
+  font-size: 18px;
+}
+
+.standard label {
+  font-size: 16px;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.standard label.error {
+  color: #eb3434;
+}
+
+.standard button {
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  margin: 5px 0;
+  padding: 13px;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.standard button:focus {
+  outline: 3px solid #646060;
+}
+
+.standard button:disabled {
+  cursor: progress;
+}
+
+/* Desktop */
+@media screen and (min-device-width: 1200px) and (max-device-width: 1600px) {
+  .standard .wrapper {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .standard .header {
+    font-size: 30px;
+  }
+
+  .notify {
+    width: 320px;
+  }
+
+  .standard .main,
+  .notification {
+    width: 320px;
+  }
+}

@@ -1,0 +1,53 @@
+.todo {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.todo li {
+  color: #3d3b3b;
+  padding: 5px;
+  border-bottom: 1px solid #504d4d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.todo li:nth-child(odd) {
+  background: #c2bfbf;
+}
+
+.todo li:nth-child(even) {
+  background: #e2e0e0;
+}
+
+.todo li:last-child {
+  border-bottom: none;
+}
+
+.todo li button {
+  width: auto;
+}
+
+.todo li div:first-child {
+  margin: 0;
+  padding: 0;
+  font-weight: 600;
+  flex: 1 1 45%;
+}
+
+.todo li div:last-child {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 0;
+}
+
+.update::after {
+  color: #504d4d;
+  content: "\270E";
+}
+.delete::after {
+  color: #504d4d;
+  content: "\2717";
+}
