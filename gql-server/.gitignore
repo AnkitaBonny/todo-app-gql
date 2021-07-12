@@ -6,3 +6,7 @@
 # mongodb
 data
 data/db
+
+# lock files
+yarn.lock
+package-lock.json
