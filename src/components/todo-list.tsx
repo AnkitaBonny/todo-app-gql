@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "@styles/todo.module.css";
+import UpdateTodo from "@components/update-todo";
+import { useState } from "react";
+import { getTodos } from "@gql";
+import { useQuery } from "react-query";
 
 type ErrorModel = {
   message?: string;
@@ -21,12 +25,19 @@ type ListProps = {
   error: ErrorModel;
   loading: boolean;
   onDelete?: (e: React.SyntheticEvent, id: string) => void;
+  onSuccess?: (e: React.SyntheticEvent, id: string) => void;
 };
 
 const TodoList: React.FC<ListProps> = (props) => {
-  const { data, error, onDelete, loading } = props;
+  const { data, error, onDelete, onSuccess, loading } = props;
+  const [showUpdateContext, setShowUpdateContext] = useState(false);
+  const { refetch } = useQuery("todos", getTodos);
   const handleOnDelete = (e: React.SyntheticEvent, id) => {
     onDelete(e, id);
+  };
+
+  const handleOnUpdate = () => {
+    refetch();
   };
 
   if (loading) { return <p>loading...</p> }
@@ -46,7 +57,7 @@ const TodoList: React.FC<ListProps> = (props) => {
                     className={styles.update}
                     type="button"
                     value="Update"
-                    onClick={() => null}
+                    onClick={(e) => setShowUpdateContext(true)}
                     disabled={loading}
                   />
                   <button
@@ -56,6 +67,13 @@ const TodoList: React.FC<ListProps> = (props) => {
                     onClick={(e) => handleOnDelete(e, todo.id)}
                     disabled={loading}
                   />
+                  { showUpdateContext && (
+                    <UpdateTodo
+                      //pass onsuccess and todo.id
+                      onSuccess={handleOnUpdate}
+                      id={todo.id}
+                    />
+                  )}
                 </div>
               </li>
             )

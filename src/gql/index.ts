@@ -51,3 +51,21 @@ export const deleteTodo = async ({ id: todoId}) => {
 
   return data;
 };
+
+export const updateTodo = async ({ id: todoId, summary}) => {
+  const data = await request(
+    endpoint,
+    gql`
+      mutation updateTodo($id: ID!, $summary: String!) {
+        updateTodo(id: $id, summary: $summary) {
+          id,
+          summary
+          created_at,
+          last_updated
+        }
+      }`,
+    { id: todoId, summary }
+  );
+
+  return data;
+};

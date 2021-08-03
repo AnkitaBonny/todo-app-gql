@@ -9,7 +9,7 @@ const TodoComponent: React.FunctionComponent = () => {
   // Get all todos
   const { data, error, isLoading, refetch } = useQuery("todos", getTodos);
   // Delete a todo
-  const { mutate } = useMutation(deleteTodo);
+  let { mutate } = useMutation(deleteTodo);
   // Handler - delete todo
   const handleOnDelete = (e: React.SyntheticEvent, id: string) => {
     mutate({
@@ -23,6 +23,10 @@ const TodoComponent: React.FunctionComponent = () => {
         console.log("onError: Delete Todo");
       }
     });
+  }
+
+  const handleOnUpdate = () => {
+    refetch();
   }
   // Handler - refetch todos post creation
   const handleOnAdd = () => {
@@ -43,6 +47,7 @@ const TodoComponent: React.FunctionComponent = () => {
             error={error}
             loading={isLoading}
             onDelete={handleOnDelete}
+            onSuccess={handleOnUpdate}
           />
         </section>
       </>
